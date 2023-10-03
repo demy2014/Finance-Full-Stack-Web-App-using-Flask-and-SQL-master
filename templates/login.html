@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="../static/images/animated-login.svg">
+        </div>
+        <div class="col-md-6 text-md-left mt-md-5">
+            <h2>Welcome Back!</h2>
+            <h2>Ready to start investing?</h2>
+            <form action="/login" method="post" class="mt-5 needs-validation" novalidate>
+                <div class="form-label-group">
+                    <input autocomplete="off" class="form-control" name="username" placeholder="Username" id="inputUsername" type="text" required autofocus>
+                    <label for="inputUsername">Username</label>
+                    <div class="spaceholder"></div>
+                    <div class="valid-feedback">Great to have you back!</div>
+                    <div class="invalid-feedback">Please enter username.</div>
+                </div>
+                <div class="form-label-group">
+                    <input class="form-control" name="password" placeholder="Password" type="password" id="inputPassword" required>
+                    <label for="inputPassword">Password</label>
+                    <div class="spaceholder"></div>
+					<div class="valid-feedback">No data leaks here!</div>
+					<div class="invalid-feedback">Please enter password.</div>
+                </div>
+                <button class="btn btn-outline-success mt-2 mb-5" type="submit">Log In</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

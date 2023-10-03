@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Favicon -->
+        <link href="/static/favicon.ico" rel="icon">
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/static/favicon/site.webmanifest">
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        <title>Wall Street Trader: {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-36KQSD0BWH"></script>
+
+    <body>
+
+        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light border">
+            <a class="navbar-brand" href="/">Wall Street Trader</a>
+            <img class="mr-auto" src="../static/images/hat-with-feather-black.svg">
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                {% if session.user_id %}
+                    <ul class="navbar-nav mr-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/quote">Quote</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/buy">Buy</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/sell">Sell</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                        <li class="nav-item"><a class="nav-link btn btn-success btn-sm text-white register" href="/register">Sign Up</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main class="mt-5">
+            {% block main %}{% endblock %}
+        </main>
+        
+        <footer>
+            <nav class="navbar fixed-bottom navbar-light bg-light small text-muted text-center footer">
+                <p>Made with<svg><use xlink:href="static/images/sprite.svg#icon-heart"></use></svg>in SF</p>
+                <p>Copyright &copy; <time id="date"></time> by <a href='https://www.jacobgrisham.com/'>Jacob Grisham</a></p>
+                <p>
+                    Data provided for free by <a href="https://iextrading.com/developer">IEX</a>. View <a href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a>.
+                </p>
+                <p>
+                    Disclaimers: this website has <span class="font-weight-bold">no connection</span> with any advertisements or sale of goods or services. This website is <span class="font-weight-bold">not </span> a phishing website because this website is only meant as a demo of full-stack software engineering. Do <span class="font-weight-bold">not</span> enter <span class="font-italic">any </span> sensitive information. This website has <span class="font-weight-bold">no connection whatsoever</span> to Robinhood. 
+                </p>
+            </nav>
+        </footer>
+
+    </body>
+
+    <script type="text/javascript" src="/static/index.js"></script>
+
+</html>
